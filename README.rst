@@ -1,3 +1,4 @@
+
 ===============
 Hello Websocket
 ===============
@@ -14,19 +15,86 @@ Hello Websocket
         :alt: Documentation Status
 
 
+===========
+Get Started
+===========
+
+Dependency
+------------
+
+* Python3.5+
+
+* Rabbitmq server
 
 
-Python Boilerplate contains all the boilerplate you need to create a Python package.
+Requirements
+--------------
+
+* requirements.txt
+
+This file contains packages to run the websocket client and server program, such as `aiohttp`, `click`, `aio-pika`.
 
 
-* Free software: MIT license
-* Documentation: https://hello-websocket.readthedocs.io.
+* requirements_dev.txt
+
+This file contains packages to develop this project.
+
+
+QuickStart
+------------
+
+First, create a virtual environment.
+
+.. code-block:: bash
+
+   $ python3 -m venv hello_venv
+   $ source hello_venv/bin/activate
+   $ pip install -r requirements.txt
+
+Then, start the local rabbitmq server. And run the websocket server.
+
+.. code-block:: bash
+
+   $ python hello_websocket/hello_websocket.py run
+   amqp://guest:********@127.0.0.1:5672//
+   ======== Running on http://127.0.0.1:8989 ========
+   (Press CTRL+C to quit)
+   receive message d888aba59857c5a373a48f03718beec3ebd69180ff710a537183c807059c5b3f from 123456.
+   receive message 1d516b32b579d1094e02ee9fab70eedf073cf3805e1ff924a3a7e2e24c06f1ef from 123456.
+   receive message a342df31c60783eec7d1bfbe4ad75284d7d0a4807d79609a2189d5ca7640390f from 123456.
+
+
+Now, start the websocket client program.
+
+.. code-block:: bash
+
+   $ python hello_websocket/hello_client.py run 123456
+   receive message hello
+   receive message hello world
+   receive message hello from http endpoint
+
+
+Send message to the websocket client.
+
+.. code-block:: bash
+
+   $ http "http://127.0.0.1:8989/pub?token=123456&body=hello from http endpoint"
+   HTTP/1.1 200 OK
+   Content-Length: 2
+   Content-Type: text/plain; charset=utf-8
+   Date: Mon, 09 Apr 2018 12:39:20 GMT
+   Server: Python/3.6 aiohttp/3.1.2
+
+   ok
 
 
 Features
 --------
 
-* TODO
+* bidirectional communication between clients and server.
+
+* push message api.
+
 
 Credits
 -------
