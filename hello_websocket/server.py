@@ -1,5 +1,5 @@
 
-"""Main module."""
+"""Hello websocket server."""
 
 import aio_pika
 import asyncio

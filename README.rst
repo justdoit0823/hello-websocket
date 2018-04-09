@@ -55,7 +55,7 @@ Then, start the local rabbitmq server. And run the websocket server.
 
 .. code-block:: bash
 
-   $ python hello_websocket/hello_websocket.py run
+   $ python hello_websocket/server.py run
    amqp://guest:********@127.0.0.1:5672//
    ======== Running on http://127.0.0.1:8989 ========
    (Press CTRL+C to quit)
@@ -68,7 +68,7 @@ Now, start the websocket client program.
 
 .. code-block:: bash
 
-   $ python hello_websocket/hello_client.py run 123456
+   $ python hello_websocket/client.py run 123456
    receive message hello
    receive message hello world
    receive message hello from http endpoint
@@ -88,16 +88,19 @@ Send message to the websocket client.
    ok
 
 
+========
 Features
---------
+========
 
 * bidirectional communication between clients and server.
 
 * push message api.
 
 
+=======
 Credits
--------
+=======
+
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
